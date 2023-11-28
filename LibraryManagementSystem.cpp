@@ -4,7 +4,7 @@ using namespace std;
 
 class temp{
 
-    string id,name,author,search;
+    string bid,bname,author,search;
     fstream file;
     public:
     void addBook();
@@ -50,28 +50,28 @@ int main(){
 }
 void temp :: addBook(){
     cout<<"\nEnter Book ID :: ";
-    getline(cin,id);
+    getline(cin,bid);
     cout<<"Enter Book Name :: ";
-    getline(cin,name);
+    getline(cin,bname);
     cout<<"Enter Book's Author name :: ";
     getline(cin,author);
 
     file.open("bookData.txt",ios :: out | ios :: app);
-    file<<id<<"*"<<name<<"*"<<author<<endl;
+    file<<bid<<"*"<<bname<<"*"<<author<<endl;
     file.close();
 }
 void temp :: showAll(){
     file.open("bookData.txt",ios :: in);
-    getline(file,id,'*');
-    getline(file,name,'*');
+    getline(file,bid,'*');
+    getline(file,bname,'*');
     getline(file,author,'\n');
         cout<<"\n\n";
         cout<<"\t\t Book Id \t\t\t Book Name \t\t\t Author's Name"<<endl;
     while(!file.eof()){
-        cout<<"\t\t "<<id<<" \t\t\t\t "<<name<<" \t\t\t "<<author<<endl;
+        cout<<"\t\t "<<bid<<" \t\t\t\t "<<bname<<" \t\t\t "<<author<<endl;
 
-        getline(file,id,'*');
-    getline(file,name,'*');
+        getline(file,bid,'*');
+    getline(file,bname,'*');
     getline(file,author,'\n');
     }
     file.close();
@@ -83,19 +83,19 @@ void temp :: extractBook(){
     getline(cin,search);
 
     file.open("bookData.txt",ios :: in);
-    getline(file,id,'*');
-    getline(file,name,'*');
+    getline(file,bid,'*');
+    getline(file,bname,'*');
     getline(file,author,'\n');
 
     cout<<"\n\n";
     cout<<"\t\t Book Id \t\t\t Book Name \t\t\t Author's Name"<<endl;
     while(!file.eof()){
-        if(search == id){
-            cout<<"\t\t "<<id<<" \t\t\t "<<name<<" \t\t\t "<<author<<endl;
+        if(search == bid){
+            cout<<"\t\t "<<bid<<" \t\t\t "<<bname<<" \t\t\t "<<author<<endl;
             cout<<"Book Extracted Successfully...!";
         }
-    getline(file,id,'*');
-    getline(file,name,'*');
+    getline(file,bid,'*');
+    getline(file,bname,'*');
     getline(file,author,'\n');
     }
     file.close();
